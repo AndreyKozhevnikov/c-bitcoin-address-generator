@@ -108,7 +108,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -140,18 +140,33 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AddressSet.h" />
+    <ClInclude Include="AddressUtil.h" />
+    <ClInclude Include="base58.h" />
     <ClInclude Include="CKeyGen.h" />
+    <ClInclude Include="CryptoUtil.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="secp256k1.h" />
+    <ClInclude Include="sha256.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddressUtil.cpp" />
+    <ClCompile Include="base58.cpp" />
+    <ClCompile Include="Base58v2.cpp" />
     <ClCompile Include="CKeyGen.cpp" />
+    <ClCompile Include="ConvertFunctions.cpp" />
+    <ClCompile Include="CryptoUtil.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ripemd160.cpp" />
+    <ClCompile Include="Rng.cpp" />
+    <ClCompile Include="secp256k1.cpp" />
+    <ClCompile Include="sha256.cpp" />
+    <ClCompile Include="sha256v2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
