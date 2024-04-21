@@ -3,8 +3,10 @@
 #include "CKeyGen.h"
 #include "AddressUtil.h"
 #include "sha256.h"
-
-
+#include "mRipeMd.cpp"
+#include <sstream>
+#include <iostream>
+#include <iomanip> 
 
 using namespace std;
 
@@ -95,5 +97,45 @@ secp256k1::ecpoint getPublicKey(string privateKey) {
 string get1Address(secp256k1::ecpoint p) {
 	string address = Address::fromPublicKey(p, true);
 	return address;
+}
+
+size_t convert_hex(uint8_t* dest, size_t count, const char* src) {
+	char buf[3];
+	size_t i;
+	for (i = 0; i < count && *src; i++) {
+		buf[0] = *src++;
+		buf[1] = '\0';
+		if (*src) {
+			buf[1] = *src++;
+			buf[2] = '\0';
+		}
+		if (sscanf(buf, "%hhx", &dest[i]) != 1)
+			break;
+	}
+	return i;
+}
+string uint8_to_hex_string(const uint8_t* v, const size_t s) {
+	std::stringstream ss;
+
+	ss << std::hex << std::setfill('0');
+
+	for (int i = 0; i < s; i++) {
+		ss << std::hex << std::setw(2) << static_cast<int>(v[i]);
+	}
+
+	return ss.str();
+}
+string Ripe160HexToHex(string redeemSha256) {
+	uint8_t msg[32];
+
+
+	uint8_t hash[20];
+	convert_hex(msg, 32, redeemSha256.c_str());
+	//memcpy(msg, redeemSha256.c_str(), sizeof(msg));
+	ripemd160x(msg, 32, hash);
+
+	string hexstr = uint8_to_hex_string(hash, 20);
+	//string hexstr = "'uint8_to_hex_string(hash, 20);'test";
+	return hexstr;
 }
 

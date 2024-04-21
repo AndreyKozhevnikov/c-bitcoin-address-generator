@@ -42,6 +42,9 @@
     <ClInclude Include="CryptoUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="bech32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -78,6 +81,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ripemd160.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mRipeMd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bech32.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
