@@ -10,6 +10,15 @@
 using namespace std;
 
 
+AddressSet CKeyGen::GenerateFromHexString(string hexvalue) {
+
+
+	vector<unsigned char> bytes2 = hexToBytesUnsign(hexvalue);
+	AddressSet res;
+	res = GenerateFromBytes(bytes2);
+	return res;
+}
+
 AddressSet CKeyGen::GenerateFromString(string value) {
 
 	vector<uint8_t> bytes = stringToBytes(value);

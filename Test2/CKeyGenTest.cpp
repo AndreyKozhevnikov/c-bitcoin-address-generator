@@ -92,6 +92,14 @@ namespace CKeyGenTests
 			string expected = "L2ZovMyTxxQVJmMtfQemgVcB5YmiEDapDwsvX6RqvuWibgUNRiHz";
 			Assert::AreEqual(expected, res.WIF);
 		}
+		TEST_METHOD(TestHexString)
+		{
+			CKeyGen keyGen;
+			string input = "0000000000000000000000000000000000000000000000000000000000000003";
+			AddressSet res = keyGen.GenerateFromHexString(input);
+			string expected = "KwDiBf89QgGbjEhKnhXJuH7LrciVrZi3qYjgd9M7rFU74sHUHy8S";
+			Assert::AreEqual(expected, res.WIF);
+		}
 		TEST_METHOD(TestInt)
 		{
 			CKeyGen keyGen;
@@ -107,6 +115,24 @@ namespace CKeyGenTests
 			int input = 1155564574;
 			AddressSet res = keyGen.GenerateFromInt(input);
 			string expected = "KwDiBf89QgGbjEhKnhXJuH7LrciVrZi3qYjgd9M8j6jbf8w5suhf";
+			Assert::AreEqual(expected, res.WIF);
+		}
+		TEST_METHOD(TestInt3)
+		{
+			CKeyGen keyGen;
+			int input = 3;
+			AddressSet res = keyGen.GenerateFromInt(input);
+			string expected = "KwDiBf89QgGbjEhKnhXJuH7LrciVrZi3qYjgd9M7rFU74sHUHy8S";
+			Assert::AreEqual(expected, res.WIF);
+		}
+
+		TEST_METHOD(TestInt3TestONly)
+		{
+			CKeyGen keyGen;
+		//	int input = 2147483647;
+			string input = "80000000";
+			AddressSet res = keyGen.GenerateFromHexString(input);
+			string expected = "KwDiBf89QgGbjEhKnhXJuH7LrciVrZi3qYjgd9M7rFU74sHUHy8S";
 			Assert::AreEqual(expected, res.WIF);
 		}
 	/*	TEST_METHOD(TestBigInt65)
